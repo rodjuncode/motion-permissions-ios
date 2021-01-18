@@ -1,0 +1,24 @@
+<html>
+
+<script>
+function banana() {
+  // feature detect
+  if (typeof DeviceMotionEvent.requestPermission === 'function') {
+    DeviceMotionEvent.requestPermission()
+      .then(permissionState => {
+        if (permissionState === 'granted') {
+          window.addEventListener('devicemotion', () => {});
+        }
+      })
+      .catch(console.error);
+  } else {
+    // handle regular non iOS 13+ devices
+  }
+}
+</script>
+
+<body>
+  <button onClick="banana()">Banana!</button>
+</body>
+
+</html>
